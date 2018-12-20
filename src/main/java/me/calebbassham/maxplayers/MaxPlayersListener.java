@@ -4,12 +4,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 
-public class JoinListener implements Listener {
+public class MaxPlayersListener implements Listener {
 
     private MaxPlayers plugin;
 
-    private JoinListener(MaxPlayers plugin) {
+    private MaxPlayersListener(MaxPlayers plugin) {
         this.plugin = plugin;
     }
 
@@ -20,8 +21,13 @@ public class JoinListener implements Listener {
         }
     }
 
-    static JoinListener register(MaxPlayers plugin) {
-        var listener = new JoinListener(plugin);
+    @EventHandler
+    public void onServerListInfo(ServerListPingEvent e) {
+        e.setMaxPlayers(plugin.getMaxPlayers());
+    }
+
+    static MaxPlayersListener register(MaxPlayers plugin) {
+        var listener = new MaxPlayersListener(plugin);
         Bukkit.getPluginManager().registerEvents(listener, plugin);
         return listener;
     }

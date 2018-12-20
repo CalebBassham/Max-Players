@@ -2,7 +2,7 @@ name: MaxPlayers
 version: 1.0
 author: Caleb Bassham
 main: me.calebbassham.maxplayers.MaxPlayers
-softdepend: [ProtocolLib]
+api-version: 1.13
 
 commands:
     maxplayers:

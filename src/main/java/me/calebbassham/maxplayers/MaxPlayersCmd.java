@@ -1,7 +1,5 @@
 package me.calebbassham.maxplayers;
 
-import com.comphenix.protocol.ProtocolLib;
-import com.comphenix.protocol.ProtocolLibrary;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,11 +10,11 @@ import org.bukkit.command.TabCompleter;
 import java.util.Collections;
 import java.util.List;
 
-public class Cmd implements CommandExecutor, TabCompleter {
+public class MaxPlayersCmd implements CommandExecutor, TabCompleter {
 
     private MaxPlayers plugin;
 
-    private Cmd(MaxPlayers plugin) {
+    private MaxPlayersCmd(MaxPlayers plugin) {
         this.plugin = plugin;
     }
 
@@ -60,9 +58,9 @@ public class Cmd implements CommandExecutor, TabCompleter {
         return Collections.emptyList();
     }
 
-    static Cmd register(MaxPlayers plugin) {
+    static MaxPlayersCmd register(MaxPlayers plugin) {
         var cmd = plugin.getCommand("maxplayers");
-        var instance = new Cmd(plugin);
+        var instance = new MaxPlayersCmd(plugin);
         cmd.setExecutor(instance);
         cmd.setTabCompleter(instance);
         return instance;

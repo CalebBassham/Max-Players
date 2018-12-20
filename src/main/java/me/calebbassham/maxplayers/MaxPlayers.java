@@ -11,12 +11,8 @@ public class MaxPlayers extends JavaPlugin {
     @Override
     public void onEnable() {
         this.maxPlayers = Bukkit.getMaxPlayers();
-        JoinListener.register(this);
-        Cmd.register(this);
-
-        if (Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
-            PlayerCountPacketAdapter.register(this);
-        }
+        MaxPlayersListener.register(this);
+        MaxPlayersCmd.register(this);
     }
 
     /**
