@@ -1,0 +1,10 @@
+name: MaxPlayers
+version: 1.0
+author: Caleb Bassham
+main: me.calebbassham.maxplayers.MaxPlayers
+softdepend: [ProtocolLib]
+
+commands:
+    maxplayers:
+        usage: /<command> <max players (INT)> [kick overflow (TRUE/FALSE)=FALSE]
+        permission: maxplayers.set
