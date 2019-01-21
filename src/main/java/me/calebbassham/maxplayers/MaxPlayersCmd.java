@@ -1,5 +1,6 @@
 package me.calebbassham.maxplayers;
 
+import me.calebbassham.pluginmessageformat.PluginMessageFormat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,6 +10,8 @@ import org.bukkit.command.TabCompleter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.List;
+
+import static me.calebbassham.pluginmessageformat.PluginMessageFormat.*;
 
 public class MaxPlayersCmd implements CommandExecutor, TabCompleter {
 
@@ -47,12 +50,14 @@ public class MaxPlayersCmd implements CommandExecutor, TabCompleter {
         try {
             plugin.setMaxPlayers(players, kick);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            sender.sendMessage(ChatColor.RED + "Failed to change max player limit.");
+            sender.sendMessage(getErrorPrefix() + "Failed to change the player limit.");
             e.printStackTrace();
             return true;
         }
 
-        sender.sendMessage(ChatColor.AQUA + "The max number of players allowed to join is now " + players + ".");
+        sender.sendMessage(getPrefix() + "The " + getMainColorPallet().getHighlightTextColor() + "max number of players" +
+                getMainColorPallet().getPrimaryTextColor() + " allowed to join is now " + getMainColorPallet().getValueTextColor() +
+                players + getMainColorPallet().getPrimaryTextColor() + ".");
         return true;
     }
 

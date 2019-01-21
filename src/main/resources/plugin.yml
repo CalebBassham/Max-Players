@@ -3,6 +3,7 @@ version: 1.0
 author: Caleb Bassham
 main: me.calebbassham.maxplayers.MaxPlayers
 api-version: 1.13
+depend: [PluginMessageFormat]
 
 commands:
     maxplayers:
